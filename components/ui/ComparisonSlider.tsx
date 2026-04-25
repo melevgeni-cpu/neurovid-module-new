@@ -72,7 +72,8 @@ export default function ComparisonSlider({ slides }: ComparisonSliderProps) {
   return (
     <div className="space-y-4">
       <div
-        className="relative w-full aspect-[4/3] overflow-hidden rounded-3xl border border-white/10"
+        className="relative w-full overflow-hidden rounded-2xl border border-white/10"
+        style={{ aspectRatio: '4 / 3', maxWidth: '100%' }}
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
         onTouchStart={() => setIsPaused(true)}
