@@ -21,14 +21,17 @@ export default function BusinessSection() {
 
         <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="space-y-6">
           <p className="text-xl">Кейс: Оживление основателя компании к 50-летию фирмы. Окупилось лояльностью команды и репостами во всех корп-чатах. Работаем по NDA.</p>
-          <button onClick={() => openModal('business')} className="bg-accent-business text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-accent-business/80 shadow-lg flex items-center gap-3">
-            <FileText size={20} />
-            Получить презентацию для руководства
-          </button>
-          <button onClick={() => openModal('contact')} className="w-full md:w-auto bg-white/10 border border-white/30 px-8 py-4 rounded-full text-lg flex items-center gap-2 hover:bg-white/20 transition">
-            <MessageCircle size={20} />
-            Обсудить проект
-          </button>
+
+          <div className="flex flex-col sm:flex-row gap-4">
+            <button onClick={() => openModal('business')} className="bg-accent-business text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-accent-business/80 shadow-lg flex items-center gap-3 justify-center">
+              <FileText size={20} />
+              Получить презентацию для руководства
+            </button>
+            <button onClick={() => openModal('order')} className="w-full sm:w-auto bg-white/10 border border-white/30 px-8 py-4 rounded-full text-lg flex items-center gap-2 hover:bg-white/20 transition justify-center">
+              <MessageCircle size={20} />
+              Заказать проект
+            </button>
+          </div>
         </motion.div>
       </div>
     </section>
