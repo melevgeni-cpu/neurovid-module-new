@@ -8,7 +8,7 @@ import Footer from '@/components/layout/Footer'
 const inter = Inter({ subsets: ['latin', 'cyrillic'] })
 
 export const metadata: Metadata = {
-  title: 'NeuroVid · Оживление памяти и AI-кинематограф',
+  title: 'NeuroVid · Реставрация фото, оживление снимков AI и нейро-продакшн',
   description: 'Верните живой взгляд близких, удивите команду и взорвите охваты с помощью нейро-реставрации и AI-видео.',
   keywords: 'нейро-реставрация, оживление фото, AI видео, семейный архив, HR бренд, Reels',
   authors: [{ name: 'NeuroVid' }],
