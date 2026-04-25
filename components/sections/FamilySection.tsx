@@ -7,18 +7,18 @@ import { useModal } from '@/hooks/useModal'
 
 const slides = [
   {
-    before: '/images/Foto-Rosa1.jpg',
-    after: '/images/Foto-Rosa2.jpg',
+    before: '/images/Foto-Rosa1.webp',
+    after: '/images/Foto-Rosa2.webp',
     video: '/videos/Rosa1_1280x720.mp4',
   },
   {
-    before: '/images/Foto-Rosa1.jpg',
-    after: '/images/Foto-Rosa2.jpg',
+    before: '/images/Foto-Rosa1.webp',
+    after: '/images/Foto-Rosa2.webp',
     video: '/videos/Rosa1_1280x720.mp4',
   },
   {
-    before: '/images/Foto-Rosa1.jpg',
-    after: '/images/Foto-Rosa2.jpg',
+    before: '/images/Foto-Rosa1.webp',
+    after: '/images/Foto-Rosa2.webp',
     video: '/videos/Rosa1_1280x720.mp4',
   },
 ]
