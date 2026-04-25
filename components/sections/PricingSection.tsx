@@ -31,7 +31,9 @@ export default function PricingSection() {
                   <li key={i} className="flex items-start gap-2"><Check size={18} className="text-green-500 shrink-0 mt-0.5" /><span>{feature}</span></li>
                 ))}
               </ul>
-              <button onClick={() => openModal('order')} className="w-full bg-accent-warm hover:bg-accent-warm/80 text-black py-3 rounded-full font-bold transition">{plan.popular ? 'Обсудить проект' : 'Заказать'}</button>
+              <button onClick={() => openModal('order')} className="w-full bg-accent-warm hover:bg-accent-warm/80 text-black py-3 rounded-full font-bold transition">
+  {plan.popular ? 'Заказать проект' : 'Заказать'}
+</button>
             </motion.div>
           ))}
         </div>
