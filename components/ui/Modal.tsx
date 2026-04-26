@@ -45,7 +45,7 @@ export default function Modal({ isOpen, type, onClose }: ModalProps) {
             <h3 className="text-2xl font-bold mb-6">Свяжитесь с нами</h3>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
               <a
-                href="https://t.me/neurovid_bot"
+                href="https://t.me/NeuroVid_robot"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-[#2AABEE] p-4 rounded-xl text-center text-white hover:opacity-90 transition"
