@@ -17,8 +17,8 @@ const slides = [
     video: '/videos/Family-1.mp4',
   },
   {
-    before: '/images/Foto-Rosa1.webp',
-    after: '/images/Foto-Rosa2.webp',
+    before: '/images/Kids-1.webp',
+    after: '/images/Kids-2.webp',
     video: '/videos/Rosa1_1280x720.mp4',
   },
 ]
