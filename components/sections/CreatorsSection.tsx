@@ -14,7 +14,7 @@ const reels = [
   },
   {
     id: 2,
-    src: '/videos/reels/reel2.mp4',
+    src: '/videos/reels/reels2.mp4',
     poster: '/images/reels/poster2.jpg',
     label: '70-е → цвет',
   },
