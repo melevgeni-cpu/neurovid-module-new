@@ -133,7 +133,7 @@ export default function CreatorsSection() {
 
                 {/* Overlay с подписью */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent rounded-xl flex items-end p-3 opacity-0 group-hover:opacity-100 transition pointer-events-none">
-                  <span className="text-sm flex items-center gap-1">
+                  <span className="text-sm flex items-center gap-1 text-white drop-shadow-lg">
                     <Video size={16} /> {reel.label}
                   </span>
                 </div>
