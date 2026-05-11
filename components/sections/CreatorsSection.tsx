@@ -2,6 +2,7 @@
 
 import { useRef, useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 import { Download, Video, Wand2, Volume2, VolumeX, Play } from 'lucide-react'
 import { useModal } from '@/hooks/useModal'
 
@@ -39,7 +40,6 @@ export default function CreatorsSection() {
         if (video && !video.paused) {
           video.pause()
           video.currentTime = 0
-          video.load() // перезагружаем, чтобы отобразился постер
           setPlayingStates(prev => prev.map((v, i) => (i === idx ? false : v)))
         }
       })
@@ -53,12 +53,11 @@ export default function CreatorsSection() {
     const targetVideo = videoRefs.current[index]
     if (!targetVideo) return
 
-    // Останавливаем и сбрасываем все видео, кроме целевого, с показом постера
+    // Останавливаем и сбрасываем все видео, кроме целевого
     videoRefs.current.forEach((video, idx) => {
       if (video && idx !== index) {
         video.pause()
         video.currentTime = 0
-        video.load() // важно для возврата постера
         setPlayingStates(prev => prev.map((v, i) => (i === idx ? false : v)))
       }
     })
@@ -69,6 +68,7 @@ export default function CreatorsSection() {
       setPlayingStates(prev => prev.map((v, i) => (i === index ? true : v)))
     } else {
       targetVideo.pause()
+      targetVideo.currentTime = 0
       setPlayingStates(prev => prev.map((v, i) => (i === index ? false : v)))
     }
   }
@@ -111,12 +111,12 @@ export default function CreatorsSection() {
                 className="bg-black/40 rounded-2xl p-1 aspect-[9/16] relative group overflow-hidden cursor-pointer"
                 onClick={() => handlePlayPause(idx)}
               >
+                {/* Видео (без встроенного poster) */}
                 <video
                   ref={(el) => {
                     videoRefs.current[idx] = el
                   }}
                   src={reel.src}
-                  poster={reel.poster}
                   className="w-full h-full object-cover rounded-xl"
                   loop
                   playsInline
@@ -132,6 +132,19 @@ export default function CreatorsSection() {
                     )
                   }
                 />
+
+                {/* Кастомный постер (изображение) — показывается только когда видео на паузе */}
+                {!playingStates[idx] && (
+                  <div className="absolute inset-0 rounded-xl overflow-hidden pointer-events-none">
+                    <Image
+                      src={reel.poster}
+                      alt={reel.label}
+                      fill
+                      className="object-cover"
+                      unoptimized
+                    />
+                  </div>
+                )}
 
                 {/* Overlay с подписью */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent rounded-xl flex items-end p-3 opacity-0 group-hover:opacity-100 transition pointer-events-none">
