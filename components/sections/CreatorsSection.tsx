@@ -5,7 +5,7 @@ import { Download, Video, Wand2 } from 'lucide-react'
 import { useModal } from '@/hooks/useModal'
 
 const reels = [
-  { id: 1, src: '/videos/reels/reel1.mp4', label: '1920-е → нейро' },
+  { id: 1, src: '/videos/reels/Seva-vertical-8-Mb.mp4', label: '1920-е → нейро' },
   { id: 2, src: '/videos/reels/reel2.mp4', label: '70-е → цвет' },
   { id: 3, src: '/videos/reels/reel3.mp4', label: 'Ожившая классика' },
 ]
