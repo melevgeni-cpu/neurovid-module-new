@@ -10,19 +10,19 @@ const reels = [
     id: 1,
     src: '/videos/reels/Seva-vertical-8-Mb.mp4',
     poster: '/images/reels/Seva-poster.jpg',
-    label: '1920-е → нейро',
+    label: 'Ожившие фото → нейро',
   },
   {
     id: 2,
     src: '/videos/reels/reels2.mp4',
     poster: '/images/reels/reels2-poster.jpg',
-    label: '70-е → цвет',
+    label: 'Эффекты → нейро',
   },
   {
     id: 3,
     src: '/videos/reels/reels3.mp4',
     poster: '/images/reels/reels3-poster.jpg',
-    label: 'Ожившая классика',
+    label: 'Ожившая классика → нейро',
   },
 ]
 
@@ -32,15 +32,42 @@ export default function CreatorsSection() {
   const [mutedStates, setMutedStates] = useState<boolean[]>([false, false, false])
   const [playingStates, setPlayingStates] = useState<boolean[]>([false, false, false])
 
+  // Остановка всех видео при скролле
+  useEffect(() => {
+    const handleScroll = () => {
+      videoRefs.current.forEach((video, idx) => {
+        if (video && !video.paused) {
+          video.pause()
+          video.currentTime = 0
+          setPlayingStates(prev => prev.map((v, i) => (i === idx ? false : v)))
+        }
+      })
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
   const handlePlayPause = (index: number) => {
-    const video = videoRefs.current[index]
-    if (!video) return
-    if (video.paused) {
-      video.play()
-      setPlayingStates((prev) => prev.map((v, i) => (i === index ? true : v)))
+    const targetVideo = videoRefs.current[index]
+    if (!targetVideo) return
+
+    // Останавливаем и сбрасываем все видео, кроме целевого
+    videoRefs.current.forEach((video, idx) => {
+      if (video && idx !== index) {
+        video.pause()
+        video.currentTime = 0
+        setPlayingStates(prev => prev.map((v, i) => (i === idx ? false : v)))
+      }
+    })
+
+    // Запускаем/останавливаем целевое видео
+    if (targetVideo.paused) {
+      targetVideo.play()
+      setPlayingStates(prev => prev.map((v, i) => (i === index ? true : v)))
     } else {
-      video.pause()
-      setPlayingStates((prev) => prev.map((v, i) => (i === index ? false : v)))
+      targetVideo.pause()
+      setPlayingStates(prev => prev.map((v, i) => (i === index ? false : v)))
     }
   }
 
@@ -48,7 +75,7 @@ export default function CreatorsSection() {
     const video = videoRefs.current[index]
     if (!video) return
     video.muted = !video.muted
-    setMutedStates((prev) => prev.map((v, i) => (i === index ? !v : v)))
+    setMutedStates(prev => prev.map((v, i) => (i === index ? !v : v)))
   }
 
   return (
@@ -93,18 +120,18 @@ export default function CreatorsSection() {
                   playsInline
                   muted={mutedStates[idx]}
                   onPlay={() =>
-                    setPlayingStates((prev) =>
+                    setPlayingStates(prev =>
                       prev.map((v, i) => (i === idx ? true : v))
                     )
                   }
                   onPause={() =>
-                    setPlayingStates((prev) =>
+                    setPlayingStates(prev =>
                       prev.map((v, i) => (i === idx ? false : v))
                     )
                   }
                 />
 
-                {/* Overlay с подписью (появляется при наведении на десктопе) */}
+                {/* Overlay с подписью */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent rounded-xl flex items-end p-3 opacity-0 group-hover:opacity-100 transition pointer-events-none">
                   <span className="text-sm flex items-center gap-1">
                     <Video size={16} /> {reel.label}
@@ -124,13 +151,13 @@ export default function CreatorsSection() {
                   </div>
                 )}
 
-                {/* Контролы (звук) на десктопе при наведении */}
+                {/* Контролы (звук) */}
                 <div
                   className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition z-20"
-                  onClick={(e) => e.stopPropagation()}
+                  onClick={e => e.stopPropagation()}
                 >
                   <button
-                    onClick={(e) => {
+                    onClick={e => {
                       e.stopPropagation()
                       toggleMute(idx)
                     }}
