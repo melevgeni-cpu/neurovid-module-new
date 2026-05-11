@@ -13,9 +13,19 @@ interface SlideData {
 
 interface ComparisonSliderProps {
   slides: SlideData[]
+  className?: string // ← новый пропс для настройки пропорций
+  /**
+   * Управляет соотношением сторон слайдера.
+   * По умолчанию '4 / 3'. Для квадрата передайте '1 / 1'.
+   */
+  aspectRatio?: string
 }
 
-export default function ComparisonSlider({ slides }: ComparisonSliderProps) {
+export default function ComparisonSlider({
+  slides,
+  className = '',
+  aspectRatio = '4 / 3',
+}: ComparisonSliderProps) {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [mode, setMode] = useState<'photo' | 'video'>('photo')
   const [sliderValue, setSliderValue] = useState(0)
@@ -72,13 +82,14 @@ export default function ComparisonSlider({ slides }: ComparisonSliderProps) {
   return (
     <div className="space-y-4">
       <div
-        className="relative w-full overflow-hidden rounded-2xl border border-white/10"
-        style={{ aspectRatio: '4 / 3', maxWidth: '100%' }}
+        className={`relative w-full overflow-hidden rounded-2xl border border-white/10 ${className}`}
+        style={{ aspectRatio, maxWidth: '100%' }}
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
         onTouchStart={() => setIsPaused(true)}
         onTouchEnd={() => setIsPaused(false)}
       >
+        {/* ... остальной код без изменений ... */}
         <AnimatePresence mode="wait">
           {mode === 'photo' && (
             <motion.div key={`photo-${currentIndex}`} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="absolute inset-0">
@@ -107,6 +118,7 @@ export default function ComparisonSlider({ slides }: ComparisonSliderProps) {
           )}
         </AnimatePresence>
       </div>
+      {/* Точки и переключатели режимов остаются без изменений */}
       <div className="flex items-center justify-between flex-wrap gap-3">
         <div className="flex gap-2">
           {slides.map((_, idx) => (
