@@ -10,19 +10,19 @@ const reels = [
     id: 1,
     src: '/videos/reels/Seva-vertical-8-Mb.mp4',
     poster: '/images/reels/Seva-poster.jpg',
-    label: '1920-е → нейро',
+    label: 'Ожившие фото → НейроВид',
   },
   {
     id: 2,
     src: '/videos/reels/reels2.mp4',
     poster: '/images/reels/reels2-poster.jpg',
-    label: '70-е → цвет',
+    label: 'Вау-эффекты → НейроВид',
   },
   {
     id: 3,
     src: '/videos/reels/reels3.mp4',
     poster: '/images/reels/reels3-poster.jpg',
-    label: 'Ожившая классика',
+    label: 'Ожившая классика → НейроВид',
   },
 ]
 
