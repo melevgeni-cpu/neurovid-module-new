@@ -20,8 +20,8 @@ const reels = [
   },
   {
     id: 3,
-    src: '/videos/reels/reel3.mp4',
-    poster: '/images/reels/poster3.jpg',
+    src: '/videos/reels/reels3.mp4',
+    poster: '/images/reels/reels3-poster.jpg',
     label: 'Ожившая классика',
   },
 ]
