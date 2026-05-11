@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef, useState } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Download, Video, Wand2, Volume2, VolumeX, Play } from 'lucide-react'
 import { useModal } from '@/hooks/useModal'
@@ -10,19 +10,19 @@ const reels = [
     id: 1,
     src: '/videos/reels/Seva-vertical-8-Mb.mp4',
     poster: '/images/reels/Seva-poster.jpg',
-    label: 'Ожившие фото → нейро',
+    label: '1920-е → нейро',
   },
   {
     id: 2,
     src: '/videos/reels/reels2.mp4',
     poster: '/images/reels/reels2-poster.jpg',
-    label: 'Эффекты → нейро',
+    label: '70-е → цвет',
   },
   {
     id: 3,
     src: '/videos/reels/reels3.mp4',
     poster: '/images/reels/reels3-poster.jpg',
-    label: 'Ожившая классика → нейро',
+    label: 'Ожившая классика',
   },
 ]
 
