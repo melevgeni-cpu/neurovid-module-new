@@ -6,18 +6,11 @@ import { Wand2 } from 'lucide-react'
 import { useModal } from '@/hooks/useModal'
 import ComparisonSlider from '@/components/ui/ComparisonSlider'
 
-const portfolioItems = [
-  // Первый элемент — слайдер сравнения (квадратный)
-  // Можно добавить отдельный элемент или заменить одну из ячеек
-  // Для примера поместим слайдер на место первого элемента
-]
-
-// Пример слайдера с одной парой (без видео)
+// Слайдер с одной парой «до/после» (без видео)
 const sliderSlide = [
   {
     before: '/images/Foto-Rosa1.webp',
     after: '/images/Foto-Rosa2.webp',
-    // video отсутствует, поэтому вкладка "Видео" будет скрыта
   },
 ]
 
@@ -37,7 +30,7 @@ export default function PortfolioSection() {
         </motion.h2>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {/* Слайдер сравнения (квадратный) — занимает одну ячейку */}
+          {/* 1. Слайдер сравнения (квадратный) */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -46,34 +39,17 @@ export default function PortfolioSection() {
           >
             <ComparisonSlider
               slides={sliderSlide}
-              className="border-none" // убираем рамку, если не нужна
+              className="border-none"
               aspectRatio="1 / 1"
             />
           </motion.div>
 
-          {/* Остальные элементы портфолио (фото и видео) */}
+          {/* 2. Видео */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.05 }}
-            className="aspect-square bg-gray-800 rounded-xl overflow-hidden"
-          >
-            <Image
-              src="/images/Foto-Rosa1.webp"
-              alt="Работа 1"
-              width={400}
-              height={400}
-              className="w-full h-full object-cover"
-              unoptimized
-            />
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
             className="aspect-square bg-gray-800 rounded-xl overflow-hidden"
           >
             <video
@@ -87,11 +63,12 @@ export default function PortfolioSection() {
             />
           </motion.div>
 
+          {/* 3. Фото */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.15 }}
+            transition={{ delay: 0.1 }}
             className="aspect-square bg-gray-800 rounded-xl overflow-hidden"
           >
             <Image
@@ -104,11 +81,12 @@ export default function PortfolioSection() {
             />
           </motion.div>
 
+          {/* 4. Ещё одно фото */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
+            transition={{ delay: 0.15 }}
             className="aspect-square bg-gray-800 rounded-xl overflow-hidden"
           >
             <Image
