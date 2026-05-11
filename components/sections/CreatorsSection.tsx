@@ -32,13 +32,14 @@ export default function CreatorsSection() {
   const [mutedStates, setMutedStates] = useState<boolean[]>([false, false, false])
   const [playingStates, setPlayingStates] = useState<boolean[]>([false, false, false])
 
-  // Остановка всех видео при скролле
+  // Остановка всех видео при скролле (с показом постера)
   useEffect(() => {
     const handleScroll = () => {
       videoRefs.current.forEach((video, idx) => {
         if (video && !video.paused) {
           video.pause()
           video.currentTime = 0
+          video.load() // перезагружаем, чтобы отобразился постер
           setPlayingStates(prev => prev.map((v, i) => (i === idx ? false : v)))
         }
       })
@@ -52,11 +53,12 @@ export default function CreatorsSection() {
     const targetVideo = videoRefs.current[index]
     if (!targetVideo) return
 
-    // Останавливаем и сбрасываем все видео, кроме целевого
+    // Останавливаем и сбрасываем все видео, кроме целевого, с показом постера
     videoRefs.current.forEach((video, idx) => {
       if (video && idx !== index) {
         video.pause()
         video.currentTime = 0
+        video.load() // важно для возврата постера
         setPlayingStates(prev => prev.map((v, i) => (i === idx ? false : v)))
       }
     })
