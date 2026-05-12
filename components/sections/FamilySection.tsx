@@ -9,7 +9,7 @@ const slides = [
   {
     before: '/images/Foto-Rosa2.webp',
     after: '/images/Foto-Rosa1.webp',
-    video: '/videos/Rosa1_1280x720.mp4',
+    video: '/videos/Rosa.mp4',
   },
   {
     before: '/images/Family-2.webp',
@@ -19,7 +19,7 @@ const slides = [
   {
     before: '/images/Kids-2.webp',
     after: '/images/Kids-1.webp',
-    video: '/videos/Rosa1_1280x720.mp4',
+    video: '/videos/Rosa.mp4',
   },
 ]
 
