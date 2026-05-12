@@ -34,7 +34,8 @@ export default function FamilySection() {
           <span className="text-accent-warm">Бережная нейро-реставрация с гарантией сходства</span>
         </motion.h2>
 
-        <div className="grid md:grid-cols-2 gap-10 items-center mt-12">
+        {/* Якорь к слайдеру */}
+        <div id="family-slider" className="grid md:grid-cols-2 gap-10 items-center mt-12 scroll-mt-20">
           <div>
             <ComparisonSlider slides={slides} />
           </div>
@@ -88,7 +89,8 @@ export default function FamilySection() {
               </table>
             </div>
 
-            <div className="flex flex-wrap gap-4">
+            {/* Якорь к кнопкам заказа */}
+            <div id="family-order" className="flex flex-wrap gap-4 scroll-mt-20">
               <button onClick={() => openModal('upload')} className="bg-accent-warm text-gray-900 px-8 py-4 rounded-full text-lg font-bold shadow-lg flex items-center gap-2 hover:scale-105 transition">
                 <Upload size={20} />
                 Бесплатно оценить сложность фото
