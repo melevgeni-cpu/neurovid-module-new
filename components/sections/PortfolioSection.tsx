@@ -9,8 +9,8 @@ import ComparisonSlider from '@/components/ui/ComparisonSlider'
 // Слайдер с одной парой «до/после» (без видео)
 const sliderSlide = [
   {
-    before: '/images/Foto-Rosa1.webp',
-    after: '/images/Foto-Rosa2.webp',
+    before: '/images/Foto-Rosa2.webp',
+    after: '/images/Foto-Rosa1.webp',
   },
 ]
 
