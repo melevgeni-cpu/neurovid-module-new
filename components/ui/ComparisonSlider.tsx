@@ -13,11 +13,7 @@ interface SlideData {
 
 interface ComparisonSliderProps {
   slides: SlideData[]
-  className?: string // ← новый пропс для настройки пропорций
-  /**
-   * Управляет соотношением сторон слайдера.
-   * По умолчанию '4 / 3'. Для квадрата передайте '1 / 1'.
-   */
+  className?: string
   aspectRatio?: string
 }
 
@@ -31,9 +27,23 @@ export default function ComparisonSlider({
   const [sliderValue, setSliderValue] = useState(0)
   const [direction, setDirection] = useState<1 | -1>(1)
   const [isPaused, setIsPaused] = useState(false)
-  const [isVideoPlaying, setIsVideoPlaying] = useState(true)
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false)
   const intervalRef = useRef<NodeJS.Timeout | null>(null)
   const videoRef = useRef<HTMLVideoElement>(null)
+
+  // Остановка видео при скролле
+  useEffect(() => {
+    const handleScroll = () => {
+      if (videoRef.current && !videoRef.current.paused) {
+        videoRef.current.pause()
+        videoRef.current.currentTime = 0
+        setIsVideoPlaying(false)
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   const startAutoMove = useCallback(() => {
     if (intervalRef.current) clearInterval(intervalRef.current)
@@ -72,8 +82,13 @@ export default function ComparisonSlider({
 
   const togglePlayPause = () => {
     if (mode === 'video' && videoRef.current) {
-      if (videoRef.current.paused) { videoRef.current.play(); setIsVideoPlaying(true) }
-      else { videoRef.current.pause(); setIsVideoPlaying(false) }
+      if (videoRef.current.paused) {
+        videoRef.current.play()
+        setIsVideoPlaying(true)
+      } else {
+        videoRef.current.pause()
+        setIsVideoPlaying(false)
+      }
     }
   }
 
@@ -89,7 +104,6 @@ export default function ComparisonSlider({
         onTouchStart={() => setIsPaused(true)}
         onTouchEnd={() => setIsPaused(false)}
       >
-        {/* ... остальной код без изменений ... */}
         <AnimatePresence mode="wait">
           {mode === 'photo' && (
             <motion.div key={`photo-${currentIndex}`} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="absolute inset-0">
@@ -109,7 +123,17 @@ export default function ComparisonSlider({
         <AnimatePresence mode="wait">
           {mode === 'video' && currentSlide.video && (
             <motion.div key={`video-${currentIndex}`} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="absolute inset-0">
-              <video ref={videoRef} src={currentSlide.video} className="w-full h-full object-cover" autoPlay loop playsInline muted={false} onPlay={() => setIsVideoPlaying(true)} onPause={() => setIsVideoPlaying(false)} />
+              <video
+                ref={videoRef}
+                src={currentSlide.video}
+                className="w-full h-full object-cover"
+                autoPlay
+                loop
+                playsInline
+                muted={false}
+                onPlay={() => setIsVideoPlaying(true)}
+                onPause={() => setIsVideoPlaying(false)}
+              />
               <div className="absolute bottom-4 right-4 flex gap-2 z-20">
                 <button onClick={() => { if (videoRef.current) { videoRef.current.muted = !videoRef.current.muted; if (!videoRef.current.muted) videoRef.current.play().catch(() => {}) } }} className="p-3 rounded-full bg-black/50 text-white hover:bg-black/70 transition" aria-label="Включить/выключить звук">🔊</button>
                 <button onClick={togglePlayPause} className="p-3 rounded-full bg-black/50 text-white hover:bg-black/70 transition" aria-label={isVideoPlaying ? 'Пауза' : 'Воспроизвести'}>{isVideoPlaying ? <Pause size={20} /> : <Play size={20} />}</button>
@@ -118,7 +142,6 @@ export default function ComparisonSlider({
           )}
         </AnimatePresence>
       </div>
-      {/* Точки и переключатели режимов остаются без изменений */}
       <div className="flex items-center justify-between flex-wrap gap-3">
         <div className="flex gap-2">
           {slides.map((_, idx) => (
