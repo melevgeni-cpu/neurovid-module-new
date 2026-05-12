@@ -1,3 +1,4 @@
+import DirectionNav from '@/components/sections/DirectionNav'
 import Hero from '@/components/sections/Hero'
 import FamilySection from '@/components/sections/FamilySection'
 import BusinessSection from '@/components/sections/BusinessSection'
@@ -14,6 +15,7 @@ export default function HomePage() {
     <>
       <main className="relative">
         <Hero />
+        <DirectionNav />
         <FamilySection />
         <BusinessSection />
         <CreatorsSection />
