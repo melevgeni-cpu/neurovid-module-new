@@ -9,8 +9,8 @@ import ComparisonSlider from '@/components/ui/ComparisonSlider'
 // Слайдер с одной парой «до/после» (без видео)
 const sliderSlide = [
   {
-    before: '/images/Inna-2.webp',
-    after: '/images/Inna-1.webp',
+    before: '/images/Inna-2.jpg',
+    after: '/images/Inna-1.jpg',
   },
 ]
 
@@ -53,7 +53,7 @@ export default function PortfolioSection() {
             className="aspect-square bg-gray-800 rounded-xl overflow-hidden"
           >
             <video
-              src="/videos/reels/family-1.mp4"
+              src="/videos/Family-1.mp4"
               muted
               loop
               playsInline
@@ -72,7 +72,7 @@ export default function PortfolioSection() {
             className="aspect-square bg-gray-800 rounded-xl overflow-hidden"
           >
             <Image
-              src="/images/Foto-Rosa2.webp"
+              src="/images/Family-1.webp"
               alt="Работа 2"
               width={400}
               height={400}
@@ -90,7 +90,7 @@ export default function PortfolioSection() {
             className="aspect-square bg-gray-800 rounded-xl overflow-hidden"
           >
             <Image
-              src="/images/portfolio/3.jpg"
+              src="/images/Family-2.webp"
               alt="Работа 3"
               width={400}
               height={400}
