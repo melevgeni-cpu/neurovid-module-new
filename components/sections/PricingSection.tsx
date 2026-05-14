@@ -1,39 +1,48 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Heart, Briefcase, Zap, Check } from 'lucide-react'
+import { Heart, Briefcase, Zap, Check, Clock, ImagePlus, MessageCircle } from 'lucide-react'
 import { useModal } from '@/hooks/useModal'
 import { useCurrency } from '@/components/ui/CurrencyToggle'
 import CurrencyToggleComponent from '@/components/ui/CurrencyToggle'
-import { convertPrice, BASE_PRICES } from '@/lib/pricing'
+import { convertPrice, PACKAGE_PRICES } from '@/lib/pricing'
 
 const plans = [
   {
     icon: Heart,
     color: 'text-accent-warm',
-    title: 'Семье',
+    title: 'Семейная реликвия',
     subtitle: 'Реставрация и оживление',
     priceKey: 'family',
-    features: ['1 фото (восстановление)', 'Ручная ретушь', 'Оживление мимики'],
-    popular: false,
+    features: [
+      '3 фото (восстановление)',
+      'Ручная ретушь',
+      'Оживление мимики',
+    ],
   },
   {
     icon: Briefcase,
     color: 'text-accent-business',
-    title: 'HR-брендам',
+    title: 'Бизнес-кейс',
     subtitle: 'HR-бренд и мероприятия',
     priceKey: 'business',
-    features: ['Оживление фото/видео', 'NDA и договор', 'Презентация для руководства'],
-    popular: true,
+    features: [
+      'До 3-х фото/видео',
+      'NDA и договор',
+      'Презентация для руководства',
+    ],
   },
   {
     icon: Zap,
     color: 'text-accent-creator',
-    title: 'Креаторам',
-    subtitle: 'Виральные Reels',
+    title: 'Виральный Reels',
+    subtitle: 'Нейро-продакшн',
     priceKey: 'creators',
-    features: ['1 рилс (до 30 сек)', 'Цветкор + музыка', 'Срок 2-3 дня'],
-    popular: false,
+    features: [
+      '1 рилс (до 30 сек)',
+      'Цветкор + музыка',
+      'Нейро-эффекты',
+    ],
   },
 ]
 
@@ -53,12 +62,12 @@ export default function PricingSection() {
           Цены / Тарифы
         </motion.h2>
         <p className="text-text-secondary mb-6">
-          Выберите направление. Все услуги включают постобработку и
-          конфиденциальность.
+          Выберите направление. Все услуги включают постобработку и конфиденциальность.
         </p>
 
         <CurrencyToggleComponent currency={currency} onToggle={toggleCurrency} />
 
+        {/* Тарифы */}
         <div className="grid md:grid-cols-3 gap-8">
           {plans.map((plan, idx) => (
             <motion.div
@@ -67,20 +76,13 @@ export default function PricingSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
-              className={`glass-card rounded-3xl p-8 relative ${
-                plan.popular ? 'ring-2 ring-accent-warm' : ''
-              }`}
+              className="glass-card rounded-3xl p-8 relative ring-2 ring-accent-warm"
             >
-              {plan.popular && (
-                <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-accent-warm text-black px-4 py-1 rounded-full text-xs font-bold">
-                  ПОПУЛЯРНЫЙ
-                </span>
-              )}
               <plan.icon className={`text-3xl mb-3 mx-auto ${plan.color}`} />
               <h3 className="text-2xl font-bold mb-2">{plan.title}</h3>
               <div className="text-sm opacity-70 mb-3">{plan.subtitle}</div>
               <div className="text-3xl font-bold text-accent-warm mb-4">
-                {convertPrice(BASE_PRICES[plan.priceKey], currency)}
+                {convertPrice(PACKAGE_PRICES[plan.priceKey], currency)}
               </div>
               <ul className="text-left space-y-2 mb-6">
                 {plan.features.map((feature, i) => (
@@ -100,10 +102,39 @@ export default function PricingSection() {
           ))}
         </div>
 
+        {/* Дополнительные услуги */}
+        <div className="mt-12 glass-card rounded-2xl p-6 max-w-2xl mx-auto text-left">
+          <h3 className="text-xl font-bold mb-4 text-text-primary">Дополнительные услуги</h3>
+          <div className="space-y-3 text-text-secondary">
+            <div className="flex items-start gap-3">
+              <Clock size={20} className="text-accent-warm shrink-0 mt-0.5" />
+              <span><strong>Срочное выполнение</strong> — наценка <strong className="text-accent-warm">+50%</strong> к стоимости пакета</span>
+            </div>
+            <div className="flex items-start gap-3">
+              <ImagePlus size={20} className="text-accent-warm shrink-0 mt-0.5" />
+              <span><strong>Каждое дополнительное фото</strong> — наценка <strong className="text-accent-warm">+15%</strong> от цены пакета</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Индивидуальный подход */}
+        <div className="mt-6 flex items-center justify-center gap-2 text-text-secondary">
+          <MessageCircle size={18} className="text-accent-warm" />
+          <span>
+            Каждый проект уникален.{' '}
+            <button
+              onClick={() => openModal('contact')}
+              className="text-accent-warm hover:underline font-medium"
+            >
+              Напишите нам
+            </button>
+            {' '}— обсудим индивидуальные условия, объёмы и сроки.
+          </span>
+        </div>
+
         {currency === 'RUB' && (
           <p className="text-xs text-text-secondary mt-6 max-w-md mx-auto">
-            Цены в RUB указаны по ознакомительному курсу ~28 ₽ за 1 BYN. Точную
-            стоимость уточняйте при заказе.
+            Цены в RUB указаны по ознакомительному курсу ~28 ₽ за 1 BYN. Точную стоимость уточняйте при заказе.
           </p>
         )}
       </div>
