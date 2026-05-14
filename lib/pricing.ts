@@ -2,10 +2,10 @@ export type Currency = 'BYN' | 'RUB'
 
 export const EXCHANGE_RATE = 28
 
-export const BASE_PRICES: Record<string, number> = {
-  family: 8,
-  business: 280,
-  creators: 95,
+export const PACKAGE_PRICES: Record<string, number> = {
+  family: 149,
+  business: 599,
+  creators: 249,
 }
 
 export function convertPrice(amountBYN: number, currency: Currency): string {
