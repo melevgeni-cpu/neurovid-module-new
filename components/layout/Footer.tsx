@@ -79,12 +79,34 @@ export default function Footer() {
           </div>
         </div>
 
+        {/* Правовая информация */}
         <div className="sm:col-span-2 lg:col-span-4 mt-6 pt-6 border-t border-border-light">
           <h4 className="text-text-primary font-semibold mb-3 text-base text-center lg:text-left">Правовая информация</h4>
-          <div className="flex flex-wrap justify-center lg:justify-start gap-4 text-sm">
-            <Link href="/privacy" className="text-text-secondary hover:text-accent-warm transition-colors underline underline-offset-2">Политика обработки персональных данных</Link>
-            <Link href="/cookies" className="text-text-secondary hover:text-accent-warm transition-colors underline underline-offset-2">Политика cookie</Link>
-            <Link href="/offer" className="text-text-secondary hover:text-accent-warm transition-colors underline underline-offset-2">Публичная оферта</Link>
+          <div className="flex flex-wrap justify-center lg:justify-start gap-x-6 gap-y-2 text-sm">
+            <Link href="/privacy" className="text-text-secondary hover:text-accent-warm transition-colors underline underline-offset-2">
+              Политика конфиденциальности
+            </Link>
+            <Link href="/offer" className="text-text-secondary hover:text-accent-warm transition-colors underline underline-offset-2">
+              Договор оферты
+            </Link>
+            <Link href="/cookies" className="text-text-secondary hover:text-accent-warm transition-colors underline underline-offset-2">
+              Политика cookie
+            </Link>
+            <Link href="/refund" className="text-text-secondary hover:text-accent-warm transition-colors underline underline-offset-2">
+              Политика возврата
+            </Link>
+            <Link href="/legal" className="text-text-secondary hover:text-accent-warm transition-colors underline underline-offset-2">
+              Юридическая информация
+            </Link>
+            <Link href="/subscription-policy" className="text-text-secondary hover:text-accent-warm transition-colors underline underline-offset-2">
+              Политика рассылок
+            </Link>
+            <Link href="/contacts" className="text-text-secondary hover:text-accent-warm transition-colors underline underline-offset-2">
+              Контакты
+            </Link>
+            <Link href="/about" className="text-text-secondary hover:text-accent-warm transition-colors underline underline-offset-2">
+              О компании
+            </Link>
           </div>
         </div>
       </div>
