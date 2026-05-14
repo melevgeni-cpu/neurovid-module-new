@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { Send, Loader2 } from 'lucide-react'
+import Link from 'next/link'
 import { motion } from 'framer-motion'
 
 const formSchema = z.object({
