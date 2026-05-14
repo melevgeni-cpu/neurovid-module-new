@@ -108,11 +108,11 @@ export default function PricingSection() {
           <div className="space-y-3 text-text-secondary">
             <div className="flex items-start gap-3">
               <Clock size={20} className="text-accent-warm shrink-0 mt-0.5" />
-              <span><strong>Срочное выполнение</strong> — наценка <strong className="text-accent-warm">+50%</strong> к стоимости пакета</span>
+              <span><strong>Срочное выполнение</strong> - <strong className="text-accent-warm">+50%</strong> к стоимости пакета</span>
             </div>
             <div className="flex items-start gap-3">
               <ImagePlus size={20} className="text-accent-warm shrink-0 mt-0.5" />
-              <span><strong>Каждое дополнительное фото</strong> — наценка <strong className="text-accent-warm">+15%</strong> от цены пакета</span>
+              <span><strong>Каждое дополнительное фото</strong> - <strong className="text-accent-warm">+15%</strong> от цены пакета</span>
             </div>
           </div>
         </div>
@@ -126,9 +126,9 @@ export default function PricingSection() {
               onClick={() => openModal('contact')}
               className="text-accent-warm hover:underline font-medium"
             >
-              Напишите нам
+              Свяжитесь с нами,
             </button>
-            {' '}— обсудим индивидуальные условия, объёмы и сроки.
+            {' '} обсудим индивидуальные условия, объёмы и сроки.
           </span>
         </div>
 
