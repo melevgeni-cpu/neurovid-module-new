@@ -25,9 +25,9 @@ export default function Footer() {
         <div>
           <h4 className="text-text-primary font-semibold mb-3 text-base">Услуги</h4>
           <ul className="space-y-2">
-            <li><Link href="#family" className="text-text-secondary hover:text-accent-warm transition-colors">Семье</Link></li>
-            <li><Link href="#business" className="text-text-secondary hover:text-accent-business transition-colors">HR-брендам</Link></li>
-            <li><Link href="#creators" className="text-text-secondary hover:text-accent-creator transition-colors">Блогерам</Link></li>
+            <li><Link href="/#family" className="text-text-secondary hover:text-accent-warm transition-colors">Семье</Link></li>
+            <li><Link href="/#business" className="text-text-secondary hover:text-accent-business transition-colors">HR-брендам</Link></li>
+            <li><Link href="/#creators" className="text-text-secondary hover:text-accent-creator transition-colors">Блогерам</Link></li>
           </ul>
         </div>
 
