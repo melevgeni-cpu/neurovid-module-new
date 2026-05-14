@@ -98,6 +98,13 @@ export default function ContactForm({ onSuccess, onClose }: ContactFormProps) {
         <label className="block text-sm font-medium mb-1">Прикрепить файл <span className="text-gray-500 text-xs">(фото/видео, необязательно)</span></label>
         <input {...register('file')} type="file" accept="image/*,video/*" className="w-full px-4 py-2 rounded-xl border bg-input-bg text-input-text border-border-light file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-accent-warm file:text-black hover:file:bg-accent-warm/80" />
       </div>
+      <div className="text-xs text-text-secondary leading-relaxed">
+  Нажимая «Отправить заявку», вы подтверждаете, что ознакомлены с{' '}
+  <Link href="/privacy" className="text-accent-warm underline hover:no-underline">
+    Политикой конфиденциальности
+  </Link>{' '}
+  и согласны на обработку персональных данных.
+</div>
       {submitError && <div className="bg-red-500/10 border border-red-500/30 text-red-500 p-3 rounded-xl text-sm">{submitError}</div>}
       <button type="submit" disabled={isSubmitting} className="w-full bg-accent-warm text-black py-3 rounded-xl font-bold hover:bg-accent-warm/90 transition flex items-center justify-center gap-2 disabled:opacity-50">
         {isSubmitting ? <><Loader2 className="animate-spin" size={20} /> Отправка...</> : <><Send size={20} /> Отправить заявку</>}
