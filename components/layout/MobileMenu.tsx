@@ -13,14 +13,14 @@ interface MobileMenuProps {
 }
 
 const navItems = [
-  { label: 'Семье', href: '#family' },
-  { label: 'HR-брендам', href: '#business' },
-  { label: 'Блогерам', href: '#creators' },
-  { label: 'Цены/Тарифы', href: '#pricing' },
-  { label: 'Портфолио', href: '#portfolio' },
-  { label: 'Отзывы', href: '#reviews' },
-  { label: 'FAQ', href: '#faq' },
-  { label: 'Контакты', href: '#footer' },
+  { label: 'Семье', href: '/#family' },
+  { label: 'HR-брендам', href: '/#business' },
+  { label: 'Блогерам', href: '/#creators' },
+  { label: 'Цены/Тарифы', href: '/#pricing' },
+  { label: 'Портфолио', href: '/#portfolio' },
+  { label: 'Отзывы', href: '/#reviews' },
+  { label: 'FAQ', href: '/#faq' },
+  { label: 'Контакты', href: '/#footer' },
 ]
 
 export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
